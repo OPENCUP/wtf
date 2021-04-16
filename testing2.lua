@@ -11,20 +11,10 @@ local TrelloApi = {}
 
 -- MAIN
 
-_T.Add = ""
-
-function UseKeyAndToken()
-	if _T.Token ~= "" or _T.Token ~= "Your token here" then
-		if _T.Key ~= "" or _T.Key ~= "Your key here" then
-			_T.Add = "?key=".._T.Key.."&token=".._T.Token
-		end	
-	end	
-	return "?key=".._T.Key.."&token=".._T.Token
-end
+_T.Add = "?key=".._T.Key.."&token=".._T.Token
 
 -- GetBoards
 function TrelloApi:GetBoards()
-	UseKeyAndToken()
 	local BoardRequest = syn.request({
 		Url = "https://api.trello.com/1/members/me/boards?fields=name".._T.Add,
 		Method = "GET"
@@ -39,7 +29,6 @@ end
 -- GetBoardByName
 
 function TrelloApi:GetBoardIdByName(name)
-	UseKeyAndToken()
 	local BoardIdRequest = syn.request({
 		Url = "https://api.trello.com/1/members/me/boards".._T.Add,
 		Method = "GET"
@@ -61,7 +50,6 @@ end
 -- GetListByName
 
 function TrelloApi:GetList(ListName,BoardId)
-	UseKeyAndToken()
 	local GetListRequest = syn.request({
 		Url = "https://api.trello.com/1/boards/"..BoardId.."/lists".._T.Add,
 		Method = "GET"
@@ -83,7 +71,6 @@ end
 -- GetCardsInList
 
 function TrelloApi:GetCardsInList(ListId)
-	UseKeyAndToken()
 	local GetCardsRequest = syn.request({
 		Url = "https://api.trello.com/1/lists/"..tostring(ListId).."/cards".._T.Add,
 		Method = "GET"
@@ -98,7 +85,6 @@ end
 -- GetLabels 
 
 function TrelloApi:GetLabels(BoardId)
-	UseKeyAndToken()
 	local GetLabelRequest = syn.request({
 		Url = "https://api.trello.com/1/boards/"..BoardId.."/labels".._T.Add,
 		Method = "GET"
@@ -114,7 +100,6 @@ end
 -- GetLabelId
 
 function TrelloApi:GetLabelId(LabelName,BoardId)
-	UseKeyAndToken()
 	local GetLabelIdRequest = syn.request({
 		Url = "https://api.trello.com/1/boards/"..BoardId.."/labels".._T.Add,
 		Method = "GET"
