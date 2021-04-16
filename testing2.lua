@@ -117,7 +117,7 @@ function TrelloApi:GetLabels(BoardId)
 	end
 	UseKeyAndToken()
 	local GetLabelRequest = syn.request({
-		Url = "https://api.trello.com/1/boards/"..BoardId.."/labels".._T.Add
+		Url = "https://api.trello.com/1/boards/"..BoardId.."/labels".._T.Add,
 		Method = "GET"
 	})
 	if GetLabelRequest.Success then
@@ -138,7 +138,7 @@ function TrelloApi:GetLabelId(LabelName,BoardId)
 	end	
 	UseKeyAndToken()
 	local GetLabelIdRequest = syn.request({
-		Url = "https://api.trello.com/1/boards/"..BoardId.."/labels".._T.Add
+		Url = "https://api.trello.com/1/boards/"..BoardId.."/labels".._T.Add,
 		Method = "GET"
 	})
 	if GetLabelIdRequest.Success then
