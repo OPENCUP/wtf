@@ -30,7 +30,7 @@ function TrelloApi:GetBoards()
 		Method = "GET"
 	})
 	if BoardRequest.Success then
-		return game:GetService("HttpService").JSONDecode(BoardRequest.Body)
+		return game:GetService("HttpService"):JSONDecode(BoardRequest.Body)
 	else
 		return "An error occured. ("..BoardRequest.StatusCode..")"
 	end	
@@ -49,7 +49,7 @@ function TrelloApi:GetBoardIdByName(name)
 		Method = "GET"
 	})
 	if BoardIdRequest.Success then
-		local Data = game:GetService("HttpService").JSONDecode(BoardIdRequest.Body)
+		local Data = game:GetService("HttpService"):JSONDecode(BoardIdRequest.Body)
 		for _,t in pairs(Data) do
 			for i,v in pairs(t) do
 				if i == "name" and v == name then
@@ -76,7 +76,7 @@ function TrelloApi:GetList(ListName,BoardId)
 		Method = "GET"
 	})
 	if GetListRequest.Success then
-		local Data = game:GetService("HttpService").JSONDecode(GetListRequest.Body)
+		local Data = game:GetService("HttpService"):JSONDecode(GetListRequest.Body)
 		for _,ta in pairs(Data) do
 			for p,t in pairs(ta) do
 				if p == "name" and t == ListName then
@@ -102,7 +102,7 @@ function TrelloApi:GetCardsInList(ListId)
 		Method = "GET"
 	})
 	if GetCardsRequest.Success then
-		return game:GetService("HttpService").JSONDecode(GetCardsRequest.Body)
+		return game:GetService("HttpService"):JSONDecode(GetCardsRequest.Body)
 	else
 		return "An error occured. ("..GetCardsRequest.StatusCode..")"
 	end	
@@ -121,7 +121,7 @@ function TrelloApi:GetLabels(BoardId)
 		Method = "GET"
 	})
 	if GetLabelRequest.Success then
-		return game:GetService("HttpService").JSONDecode(GetLabelRequest.Body)
+		return game:GetService("HttpService"):JSONDecode(GetLabelRequest.Body)
 	else
 		return "An error occured. ("..GetLabelRequest.StatusCode..")"
 	end	
@@ -142,7 +142,7 @@ function TrelloApi:GetLabelId(LabelName,BoardId)
 		Method = "GET"
 	})
 	if GetLabelIdRequest.Success then
-		local Data = game:GetService("HttpService").JSONDecode(GetLabelIdRequest.Body)
+		local Data = game:GetService("HttpService"):JSONDecode(GetLabelIdRequest.Body)
 		local ID 
 		for _,v in next,Data do
 			if v.name == LabelName then
