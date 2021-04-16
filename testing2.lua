@@ -39,10 +39,6 @@ end
 -- GetBoardByName
 
 function TrelloApi:GetBoardIdByName(name)
-	name = name or nil
-	if name == nil then
-		return "Please, specify a name of board."
-	end
 	UseKeyAndToken()
 	local BoardIdRequest = syn.request({
 		Url = "https://api.trello.com/1/members/me/boards".._T.Add,
@@ -65,11 +61,6 @@ end
 -- GetListByName
 
 function TrelloApi:GetList(ListName,BoardId)
-	ListName = ListName or nil
-	BoardId = BoardId or nil
-	if ListName == nil or BoardId == nil then
-		return "An error occured while getting ListName or BoardId."
-	end	
 	UseKeyAndToken()
 	local GetListRequest = syn.request({
 		Url = "https://api.trello.com/1/boards/"..BoardId.."/lists".._T.Add,
@@ -92,10 +83,6 @@ end
 -- GetCardsInList
 
 function TrelloApi:GetCardsInList(ListId)
-	ListId = ListId or nil
-	if ListId == nil then
-		return "ListId is invalid or does not exist."
-	end	
 	UseKeyAndToken()
 	local GetCardsRequest = syn.request({
 		Url = "https://api.trello.com/1/lists/"..tostring(ListId).."/cards".._T.Add,
@@ -111,10 +98,6 @@ end
 -- GetLabels 
 
 function TrelloApi:GetLabels(BoardId)
-	BoardId = BoardId or nil
-	if BoardId == nil then 
-		return "Please specify BoardId." 
-	end
 	UseKeyAndToken()
 	local GetLabelRequest = syn.request({
 		Url = "https://api.trello.com/1/boards/"..BoardId.."/labels".._T.Add,
@@ -131,11 +114,6 @@ end
 -- GetLabelId
 
 function TrelloApi:GetLabelId(LabelName,BoardId)
-	LabelName = LabelName or nil
-	BoardId = BoardId or nil
-	if LabelName == nil or BoardId == nil then
-		return "LabelName or BoardId is not valid."
-	end	
 	UseKeyAndToken()
 	local GetLabelIdRequest = syn.request({
 		Url = "https://api.trello.com/1/boards/"..BoardId.."/labels".._T.Add,
